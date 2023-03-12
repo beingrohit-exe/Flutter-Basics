@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  var text = "Home Page";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text("Rohit Parihar (Home Page)"),
+          child: Text(text),
         ),
       ),
       drawer: Drawer(),
