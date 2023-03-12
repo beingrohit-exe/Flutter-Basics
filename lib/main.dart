@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tutorial/Pages/home_page.dart';
 import 'package:tutorial/Pages/login_page.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
 
       //properties for light theme
       theme: ThemeData(
+          fontFamily: GoogleFonts.lato().fontFamily,
           //primary swatch is auto assigning colors based on color given
           //like if we give red color then it will give auto colors to all the properties
           primarySwatch: Colors.purple),
@@ -27,8 +29,8 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(brightness: Brightness.dark),
       initialRoute: "/home",
       routes: {
-        "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
+        "/": (context) => HomePage(),
+        "/home": (context) => LoginPage(),
       },
     );
   }
