@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tutorial/Pages/my-drawer.dart';
 
 class HomePage extends StatelessWidget {
   var text = "Home Page";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class HomePage extends StatelessWidget {
           child: Text(text),
         ),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }

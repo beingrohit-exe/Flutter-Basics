@@ -5,7 +5,7 @@ import 'package:tutorial/Pages/login_page.dart';
 import 'package:tutorial/Utils/Routes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       //home: HomePage(),
 
       // Only theme mode not works because we have to give properties of it
@@ -24,11 +25,11 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.lato().fontFamily,
           //primary swatch is auto assigning colors based on color given
           //like if we give red color then it will give auto colors to all the properties
-          primarySwatch: Colors.purple),
+          primarySwatch: Colors.deepPurple),
 
       //properties for dark theme
       darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: MyRoutes.LoginRoute,
+      initialRoute: MyRoutes.HomeRoute,
       routes: {
         MyRoutes.HomeRoute: (context) => HomePage(),
         MyRoutes.LoginRoute: (context) => LoginPage(),
