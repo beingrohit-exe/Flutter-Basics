@@ -1,14 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:tutorial/Core/my-store.dart';
 import 'package:tutorial/Modals/catalog.dart';
 import 'package:tutorial/Widgets/catalog-list.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CartModal {
-
   // //Singleton class
   // static final cartModal = CartModal._internal();
   // CartModal._internal();
   // factory CartModal() => cartModal;
-  
+
   //Catalog Field
   late CatalogItems _catalog;
 
@@ -39,5 +40,15 @@ class CartModal {
   //Remove item from Cart
   void remove(Item item) {
     _itemId.remove(item.id);
+  }
+}
+
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+  AddMutation(this.item);
+
+  @override
+  perform() {
+    store?.cart._itemId.add(item.id);
   }
 }
