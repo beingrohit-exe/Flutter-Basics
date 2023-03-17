@@ -69,19 +69,21 @@ class _CartListState extends State<_CartList> {
   final _cart = CartModal();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _cart.items.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.check_box_rounded),
-        trailing: IconButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: "Not Supported".text.make()));
-          },
-          icon: Icon(Icons.remove),
-        ),
-        title: _cart.items[index].name.text.make(),
-      ),
-    );
+    return _cart.items.isEmpty
+        ? "Cart is Empty please add some items".text.makeCentered()
+        : ListView.builder(
+            itemCount: _cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: Icon(Icons.check_box_rounded),
+              trailing: IconButton(
+                onPressed: () {
+                  _cart.remove(_cart.items[index]);
+                  setState(() {});
+                },
+                icon: Icon(Icons.remove),
+              ),
+              title: _cart.items[index].name.text.make(),
+            ),
+          );
   }
 }
