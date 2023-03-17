@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tutorial/Pages/cart.dart';
 import 'package:tutorial/Pages/home_page.dart';
 import 'package:tutorial/Pages/login_page.dart';
 import 'package:tutorial/Utils/Routes.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       //home: HomePage(),
 
       // Only theme mode not works because we have to give properties of it
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
 
       //properties for light theme
       theme: MyTheme.lightTheme(context),
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MyRoutes.HomeRoute: (context) => HomePage(),
         MyRoutes.LoginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => Cart()
       },
     );
   }
