@@ -1,10 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tutorial/Modals/catalog.dart';
 import 'package:tutorial/Pages/my-drawer.dart';
+import 'package:tutorial/Utils/Routes.dart';
+import 'package:tutorial/Utils/themes.dart';
+import 'package:tutorial/Widgets/catalog-header.dart';
+import 'package:tutorial/Widgets/catalog-list.dart';
 import 'package:tutorial/Widgets/my-widget.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -32,8 +38,39 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //final dummyList = List.generate(50, (index) => CatalogItems.items[0]);
     return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        backgroundColor: Theme.of(context).buttonColor,
+        child: Icon(
+          CupertinoIcons.cart,
+          color: Colors.white,
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          padding: Vx.m16,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CatalogHeader(),
+              if (CatalogItems.items != null && CatalogItems.items.isNotEmpty)
+                CatalogList().expand()
+              else
+                CircularProgressIndicator().centered().expand(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+/**
+ * final dummyList = List.generate(50, (index) => CatalogItems.items[0]);
+  return Scaffold(
       appBar: AppBar(
         title: const Text("Electronic Store"),
       ),
@@ -91,5 +128,4 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: MyDrawer(),
     );
-  }
-}
+ */
