@@ -1,10 +1,10 @@
 class CatalogItems {
 
-  //Singleton class
-  static final catModal = CatalogItems._internal();
-  CatalogItems._internal();
-  factory CatalogItems() => catModal;
-  
+  // //Singleton class
+  // static final catModal = CatalogItems._internal();
+  // CatalogItems._internal();
+  // factory CatalogItems() => catModal;
+
   // static List<Item>? items;
   static List<Item> items = [];
 

@@ -4,10 +4,11 @@ import 'package:tutorial/Widgets/catalog-list.dart';
 
 class CartModal {
 
-  //Singleton class
-  static final cartModal = CartModal._internal();
-  CartModal._internal();
-  factory CartModal() => cartModal;
+  // //Singleton class
+  // static final cartModal = CartModal._internal();
+  // CartModal._internal();
+  // factory CartModal() => cartModal;
+  
   //Catalog Field
   late CatalogItems _catalog;
 
