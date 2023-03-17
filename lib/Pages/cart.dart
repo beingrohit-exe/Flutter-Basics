@@ -39,22 +39,28 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}"
-              .text
-              .xl4
-              .color(Theme.of(context).accentColor)
-              .make(),
-          WidthBox(40),
+          VxBuilder(
+            mutations: {RemoveMutation},
+            builder: (context, _, status) {
+              return "\$${_cart.totalPrice}"
+                  .text
+                  .xl5
+                  .color(context.theme.accentColor)
+                  .make();
+            },
+          ),
+          30.widthBox,
           ElevatedButton(
             onPressed: () {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: "Not Supported".text.make()));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: "Buying not supported yet.".text.make(),
+              ));
             },
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all(Theme.of(context).buttonColor)),
-            child: "Buy".text.make(),
-          ).w40(context)
+                    MaterialStateProperty.all(context.theme.buttonColor)),
+            child: "Buy".text.white.make(),
+          ).w32(context)
         ],
       ),
     );
@@ -63,9 +69,10 @@ class _CartTotal extends StatelessWidget {
 
 class _CartList extends StatelessWidget {
   // final _cart = CartModal();
-  final CartModal _cart = (VxState.store as MyStore).cart;
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModal _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "Cart is Empty please add some items".text.makeCentered()
         : ListView.builder(
@@ -74,7 +81,8 @@ class _CartList extends StatelessWidget {
               leading: Icon(Icons.check_box_rounded),
               trailing: IconButton(
                 onPressed: () {
-                  _cart.remove(_cart.items[index]);
+                  // _cart.remove(_cart.items[index]);
+                  RemoveMutation(_cart.items[index]);
                   // setState(() {});
                 },
                 icon: Icon(Icons.remove),
