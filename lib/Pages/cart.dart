@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorial/Core/my-store.dart';
 import 'package:tutorial/Modals/cart-modal.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -29,7 +30,8 @@ class Cart extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  final _cart = CartModal();
+  // final _cart = CartModal();
+  final CartModal _cart = (VxState.store as MyStore).cart;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -59,8 +61,9 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatelessWidget{
-  final _cart = CartModal();
+class _CartList extends StatelessWidget {
+  // final _cart = CartModal();
+  final CartModal _cart = (VxState.store as MyStore).cart;
   @override
   Widget build(BuildContext context) {
     return _cart.items.isEmpty
