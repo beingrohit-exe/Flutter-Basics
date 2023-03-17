@@ -4,12 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tutorial/Modals/catalog.dart';
-import 'package:tutorial/Pages/my-drawer.dart';
 import 'package:tutorial/Utils/Routes.dart';
-import 'package:tutorial/Utils/themes.dart';
 import 'package:tutorial/Widgets/catalog-header.dart';
 import 'package:tutorial/Widgets/catalog-list.dart';
-import 'package:tutorial/Widgets/my-widget.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
